@@ -87,22 +87,22 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   projects: [
     {
       id: 'neural-canvas',
-      name: 'Neural Canvas',
+      name: 'Hair Design',
       category: 'Immersive Web',
-      image: 'https://images.unsplash.com/photo-1720962158789-9389a4f399da?w=2560&q=80',
-      description: 'An interactive WebGL digital art installation featuring generative particle physics and glitch aesthetic shaders.',
-      year: '2025',
-      link: 'https://sites.google.com/view/939pro/portfolio',
+      image: 'https://ik.imagekit.io/kevfun/Screenshot%202026-09-02%20115849.jpg',
+      description: 'A modern, fully responsive website for Bayview Mall Creative Hair Dsn featuring a service showcase, interactive booking flow, and an elegant, mobile-friendly design.',
+      year: '2026',
+      link: 'https://bayviewmalldsn.netlify.app/',
       tags: ['WebGL', 'Three.js', 'Shader Programming', 'Interactive']
     },
     {
       id: 'prism-experience',
-      name: 'Prism',
+      name: 'Salon',
       category: 'Brand Experience',
-      image: 'https://images.unsplash.com/photo-1720962158919-6c5f5f99630d?w=1600&q=80',
-      description: 'Light refraction visual identity and immersive ecommerce experience for a luxury optics house.',
-      year: '2025',
-      link: 'https://sites.google.com/view/939pro/portfolio',
+      image: 'https://ik.imagekit.io/kevfun/Screenshot%202026-09-02%20135011.jpg',
+      description: 'A modern, fully responsive website for RK Salon featuring a service showcase, interactive booking flow, and an elegant, mobile-friendly design.',
+      year: '2026',
+      link: 'https://rk-salon.netlify.app/',
       tags: ['UI/UX Design', 'Brand Identity', 'Creative Direction']
     }
   ],

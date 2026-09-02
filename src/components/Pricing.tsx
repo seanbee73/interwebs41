@@ -49,7 +49,7 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPackage }) => {
         </a>
         <span className="hidden sm:inline text-[var(--glass-border)]">|</span>
         <a
-          href="https://www.facebook.com/dubstar939"
+          href="https://www.facebook.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 hover:text-[var(--accent)] transition-colors"

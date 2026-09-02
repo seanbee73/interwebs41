@@ -34,6 +34,7 @@ export const WorkGrid: React.FC = () => {
               src={project.image}
               alt={project.name}
               loading="lazy"
+              referrerPolicy="no-referrer"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
 
@@ -73,6 +74,7 @@ export const WorkGrid: React.FC = () => {
               <img
                 src={selectedProject.image}
                 alt={selectedProject.name}
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />

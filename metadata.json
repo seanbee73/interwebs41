@@ -1,0 +1,8 @@
+{
+  "name": "InterWebs41",
+  "description": "Personal portfolio and digital experience studio offering Digital Strategy, UI/UX Design, Web Development, and Brand Identity services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

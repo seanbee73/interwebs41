@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Sun, Moon, Menu, X, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Sun, Moon, Menu, X } from 'lucide-react';
 import { ThemeMode } from '../types';
 import { useSiteContent } from '../context/SiteContentContext';
 
@@ -11,9 +11,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { content, setIsAdminOpen, submissions } = useSiteContent();
-
-  const unreadCount = submissions.filter((s) => s.status === 'unread').length;
+  const { content } = useSiteContent();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,23 +62,8 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
         ))}
       </div>
 
-      {/* Action Buttons & Theme Toggle & Admin Button */}
+      {/* Action Buttons & Theme Toggle */}
       <div className="flex items-center gap-3">
-        {/* Admin Dashboard Trigger */}
-        <button
-          onClick={() => setIsAdminOpen(true)}
-          title="Open Admin CMS Dashboard (Ctrl+Shift+A)"
-          aria-label="Open Admin Dashboard"
-          className="relative p-2.5 rounded-full border border-[var(--glass-border)] bg-[var(--glass)] hover:border-[var(--accent)] text-[var(--text)] transition-all duration-300 hover:scale-105"
-        >
-          <ShieldCheck className="w-4 h-4 text-[var(--accent)]" />
-          {unreadCount > 0 && (
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white rounded-full text-[10px] font-bold flex items-center justify-center">
-              {unreadCount}
-            </span>
-          )}
-        </button>
-
         {/* Theme Toggle Button */}
         <button
           onClick={onToggleTheme}
@@ -104,47 +87,90 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
           <ArrowRight className="w-3.5 h-3.5" />
         </a>
 
-        {/* Mobile Toggle Button */}
+        {/* Hamburger Menu Toggle Button (Visible on ALL screens) */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-[var(--text)] hover:text-[var(--accent)] transition-colors"
+          className="flex items-center gap-2 p-2.5 rounded-full border border-[var(--glass-border)] bg-[var(--glass)] hover:border-[var(--accent)] text-[var(--text)] transition-all duration-300 hover:scale-105"
           aria-label="Toggle navigation menu"
+          title="Navigation Menu"
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? (
+            <X className="w-5 h-5 text-[var(--accent)]" />
+          ) : (
+            <Menu className="w-5 h-5 text-[var(--accent)]" />
+          )}
+          <span className="text-xs font-mono uppercase tracking-wider hidden sm:inline text-[var(--text-muted)] pl-0.5 pr-1">
+            Menu
+          </span>
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Navigation Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-[60px] bg-[var(--bg)]/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center p-8 space-y-6 text-center animate-fadeIn">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-2xl font-display font-medium text-[var(--text)] hover:text-[var(--accent)] transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              setIsAdminOpen(true);
-            }}
-            className="w-full max-w-xs inline-flex items-center justify-center gap-2 text-sm font-mono text-[var(--accent)] border border-[var(--accent)]/30 py-3 rounded-full bg-[var(--accent)]/10"
+        <div
+          className="fixed inset-0 top-[70px] bg-black/70 backdrop-blur-md z-40 flex justify-end animate-fadeIn"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-md bg-[var(--bg)] border-l border-[var(--glass-border)] p-8 h-[calc(100vh-70px)] overflow-y-auto flex flex-col justify-between shadow-2xl"
           >
-            <ShieldCheck className="w-4 h-4" />
-            <span>Admin CMS Panel</span>
-          </button>
-          <a
-            href="#contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="w-full max-w-xs mt-2 inline-flex items-center justify-center gap-2 text-sm font-medium tracking-wider uppercase text-[var(--bg)] bg-[var(--accent)] py-3 rounded-full shadow-lg"
-          >
-            <span>Start Project</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
+            <div className="space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-[var(--glass-border)]">
+                <span className="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">
+                  Site Navigation
+                </span>
+                <span className="text-xs font-mono text-[var(--accent)]">
+                  7 Sections
+                </span>
+              </div>
+
+              <div className="grid gap-2">
+                {[
+                  { num: '01', name: 'Home / Hero', href: '#' },
+                  { num: '02', name: 'Our Philosophy', href: '#manifesto' },
+                  { num: '03', name: 'Services Offered', href: '#capabilities' },
+                  { num: '04', name: 'Work & Portfolio', href: '#work' },
+                  { num: '05', name: 'Development Process', href: '#process' },
+                  { num: '06', name: 'Pricing Packages', href: '#pricing' },
+                  { num: '07', name: 'Contact & Inquiry', href: '#contact' },
+                ].map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-between p-3.5 rounded-xl hover:bg-[var(--glass)] border border-transparent hover:border-[var(--glass-border)] group transition-all duration-200"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-xs text-[var(--accent)] opacity-80 font-bold">
+                        {item.num}
+                      </span>
+                      <span className="font-display font-medium text-base text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">
+                        {item.name}
+                      </span>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent)] group-hover:translate-x-1 transition-all" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-[var(--glass-border)] space-y-4">
+              <a
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[var(--accent)] text-[#060606] font-mono text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-[0_0_20px_var(--accent-glow)] transition-all"
+              >
+                <span>Start Your Project</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+
+              <div className="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)] pt-2">
+                <span>{content.contactInfo?.email || 'interwebs41@gmail.com'}</span>
+                <span>{content.contactInfo?.phone || '850-361-8984'}</span>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </nav>

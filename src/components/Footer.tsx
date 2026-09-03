@@ -62,7 +62,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs font-light">
               <li>
                 <a
-                  href="https://www.facebook.com/"
+                  href="https://www.facebook.com/interwebs41"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[var(--text-dim)] hover:text-[var(--accent)] transition-colors"

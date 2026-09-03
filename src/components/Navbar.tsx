@@ -167,7 +167,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, onToggleTheme }) => {
 
               <div className="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)] pt-2">
                 <span>{content.contactInfo?.email || 'interwebs41@gmail.com'}</span>
-                <span>{content.contactInfo?.phone || '850-361-8984'}</span>
+                <span>{content.contactInfo?.phone || '647-894-6964'}</span>
               </div>
             </div>
           </div>

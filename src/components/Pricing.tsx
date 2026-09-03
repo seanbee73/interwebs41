@@ -9,7 +9,7 @@ interface PricingProps {
 export const Pricing: React.FC<PricingProps> = ({ onSelectPackage }) => {
   const { content } = useSiteContent();
   const pricingPackages = content.pricing || [];
-  const contactInfo = content.contactInfo || { email: 'interwebs41@gmail.com', phone: '850-361-8984' };
+  const contactInfo = content.contactInfo || { email: 'interwebs41@gmail.com', phone: '647-894-6964' };
 
   const [selectedPackageId, setSelectedPackageId] = useState<string>(pricingPackages[1]?.id || 'classic');
 
@@ -49,7 +49,7 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPackage }) => {
         </a>
         <span className="hidden sm:inline text-[var(--glass-border)]">|</span>
         <a
-          href="https://www.facebook.com/"
+          href="https://www.facebook.com/interwebs41"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 hover:text-[var(--accent)] transition-colors"

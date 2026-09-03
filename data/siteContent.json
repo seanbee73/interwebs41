@@ -8,7 +8,7 @@
   },
   "contactInfo": {
     "email": "interwebs41@gmail.com",
-    "phone": "850-361-8984",
+    "phone": "647-894-6964",
     "address": "Pensacola, FL / Remote Worldwide",
     "location": "Pensacola, Florida, USA"
   },
@@ -104,10 +104,9 @@
       "year": "2026",
       "link": "https://bayviewmalldsn.netlify.app/",
       "tags": [
-        "WebGL",
-        "Three.js",
-        "Shader Programming",
-        "Interactive"
+        "Dynamic Filtering",
+        "Real-time Search",
+        "Interactive Elements"
       ]
     },
     {
@@ -121,22 +120,21 @@
       "tags": [
         "UI/UX Design",
         "Brand Identity",
-        "Creative Direction"
+        "Interactive Elements"
       ]
     }
   ],
   "pricing": [
     {
       "id": "essentials",
-      "title": "The Essentials",
-      "subtitle": "Perfect for startups, elopements, or targeted single projects.",
-      "price": "$400",
+      "title": "Basic Web Design Packages",
+      "subtitle": "Perfect for individuals, new startups, or small businesses with tight budgets who simply need a straightforward, informative online presence.",
+      "price": "from $1,000",
       "features": [
-        "Comprehensive discovery & initial roadmap",
-        "Single-page application or core UI design",
-        "Mobile-first responsive layout",
-        "Basic SEO & metadata setup",
-        "1 Dedicated developer/designer"
+        "Design & Customization - A simple layout with minor customization. Mobile responsive layout.",
+        "Scope & Pages - Covers key pages like Home, About Us, Services, and Contact) usually around 5 pages.",
+        "Core Features - Essential elements like basic contact forms, simple photo galleries, and links to social media profiles. Basic SEO capabilities & metadata setup.",
+        "Revisions - Includes up to 3 rounds of design changes."
       ]
     },
     {

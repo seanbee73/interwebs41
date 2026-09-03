@@ -10,7 +10,7 @@ interface ContactSectionProps {
 
 export const ContactSection: React.FC<ContactSectionProps> = ({ initialService, initialBudget }) => {
   const { content } = useSiteContent();
-  const contactInfo = content.contactInfo || { email: 'interwebs41@gmail.com', phone: '850-361-8984' };
+  const contactInfo = content.contactInfo || { email: 'interwebs41@gmail.com', phone: '647-894-6964' };
 
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',

@@ -23,14 +23,14 @@ const DEFAULT_SITE_CONTENT = {
   },
   contactInfo: {
     email: 'interwebs41@gmail.com',
-    phone: '850-361-8984',
-    address: 'Pensacola, FL / Remote Worldwide',
-    location: 'Pensacola, Florida, USA'
+    phone: '647-894-6864',
+    address: 'Toronto, Ontario / Remote Worldwide',
+    location: 'Toronto, Ontario, Canada'
   },
   manifesto: {
     badge: 'Our Philosophy',
     title: 'We build high-performance, immersive web experiences that convert.',
-    paragraph1: 'At InterWebs41, we fuse cutting-edge AI architecture with WebGL visual craft and responsive performance to build digital assets that stand out in crowded markets.',
+    paragraph1: 'At InterWebs41, we fuse cutting-edge AI architecture with visual craft and responsive performance to build digital assets that stand out in crowded markets.',
     paragraph2: 'Every line of code, animation, and UI element is engineered to deliver measurable business impact, lightning fast loading speeds, and unforgettable user engagement.'
   },
   metrics: [
@@ -106,7 +106,7 @@ const DEFAULT_SITE_CONTENT = {
       description: 'A modern, fully responsive website for Bayview Mall Creative Hair Dsn featuring a service showcase, interactive booking flow, and an elegant, mobile-friendly design.',
       year: '2026',
       link: 'https://bayviewmalldsn.netlify.app/',
-      tags: ['WebGL', 'Three.js', 'Shader Programming', 'Interactive']
+      tags: ['Dynamic Filtering', 'Real-time Search', 'Interactive Elements']
     },
     {
       id: 'prism-experience',
@@ -116,21 +116,20 @@ const DEFAULT_SITE_CONTENT = {
       description: 'A modern, fully responsive website for RK Salon featuring a service showcase, interactive booking flow, and an elegant, mobile-friendly design.',
       year: '2026',
       link: 'https://rk-salon.netlify.app/',
-      tags: ['UI/UX Design', 'Brand Identity', 'Creative Direction']
+      tags: ['UI/UX Design', 'Brand Identity', 'Interactive Elements']
     }
   ],
   pricing: [
     {
       id: 'essentials',
-      title: 'The Essentials',
-      subtitle: 'Perfect for startups, elopements, or targeted single projects.',
-      price: '$400',
+      title: 'Basic Web Design Packages',
+      subtitle: 'Perfect for individuals, new startups, or small businesses with tight budgets who simply need a straightforward, informative online presence.',
+      price: 'from $1,000',
       features: [
-        'Comprehensive discovery & initial roadmap',
-        'Single-page application or core UI design',
-        'Mobile-first responsive layout',
-        'Basic SEO & metadata setup',
-        '1 Dedicated developer/designer'
+        'Design & Customization - A simple layout with minor customization. Mobile responsive layout.',
+        'Scope & Pages - Covers key pages like Home, About Us, Services, and Contact) usually around 5 pages.',
+        'Core Features - Essential elements like basic contact forms, simple photo galleries, and links to social media profiles. Basic SEO capabilities & metadata setup.',
+        'Revisions - Includes up to 3 rounds of design changes.'
       ]
     },
     {

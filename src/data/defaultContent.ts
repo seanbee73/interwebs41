@@ -109,15 +109,14 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   pricing: [
     {
       id: 'essentials',
-      title: 'The Essentials',
-      subtitle: 'Perfect for startups, elopements, or targeted single projects.',
-      price: '$400',
+      title: 'Basic Web Design Packages',
+      subtitle: 'Perfect for individuals, new startups, or small businesses with tight budgets who simply need a straightforward, informative online presence.',
+      price: 'from $1,000',
       features: [
-        'Comprehensive discovery & initial roadmap',
-        'Single-page application or core UI design',
-        'Mobile-first responsive layout',
-        'Basic SEO & metadata setup',
-        '1 Dedicated developer/designer'
+        'Design & Customization - A simple layout with minor customization. Mobile responsive layout.',
+        'Scope & Pages - Covers key pages like Home, About Us, Services, and Contact) usually around 5 pages.',
+        'Core Features - Essential elements like basic contact forms, simple photo galleries, and links to social media profiles. Basic SEO capabilities & metadata setup.',
+        'Revisions - Includes up to 3 rounds of design changes.'
       ]
     },
     {

@@ -4,10 +4,17 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const getDirname = () => {
+  if (typeof __dirname !== 'undefined') return __dirname;
+  try {
+    return path.dirname(fileURLToPath(import.meta.url));
+  } catch {
+    return process.cwd();
+  }
+};
 
-const DATA_DIR = path.join(__dirname, 'data');
+const currentDir = getDirname();
+const DATA_DIR = path.join(process.cwd(), 'data');
 const CONTENT_FILE = path.join(DATA_DIR, 'siteContent.json');
 const SUBMISSIONS_FILE = path.join(DATA_DIR, 'submissions.json');
 const ADMIN_CONFIG_FILE = path.join(DATA_DIR, 'adminConfig.json');
@@ -246,7 +253,7 @@ function loadAdminConfig() {
   } catch (err) {
     console.error('Error loading adminConfig.json:', err);
   }
-  const defaultConfig = { password: 'admin123', token: 'iw41_admin_session_token_939' };
+  const defaultConfig = { password: 'Casper707!', token: 'iw41_admin_session_token_939' };
   fs.writeFileSync(ADMIN_CONFIG_FILE, JSON.stringify(defaultConfig, null, 2));
   return defaultConfig;
 }
@@ -257,7 +264,7 @@ function saveAdminConfig(config: any) {
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
   app.use(express.json({ limit: '10mb' }));
 

@@ -188,11 +188,10 @@ export const AdminDashboardModal: React.FC = () => {
                   type="password"
                   value={passcode}
                   onChange={(e) => setPasscode(e.target.value)}
-                  placeholder="Enter passcode (Default: admin123)"
+                  placeholder="Enter passcode"
                   required
                   className="w-full px-4 py-3 rounded-xl bg-[var(--bg)] border border-[var(--glass-border)] focus:border-[var(--accent)] text-sm outline-none transition-colors"
                 />
-                <p className="text-[11px] text-[var(--text-dim)] font-mono">Default passcode: <code className="text-[var(--accent)]">admin123</code></p>
               </div>
 
               {authError && (

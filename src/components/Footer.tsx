@@ -93,7 +93,7 @@ export const Footer: React.FC = () => {
       <div className="container-custom mt-12 pt-6 border-t border-[var(--glass-border)] flex flex-col sm:flex-row justify-between items-center text-xs font-mono text-[var(--text-dim)] gap-3">
         <span>© {new Date().getFullYear()} {content.hero?.title || 'InterWebs41'}. All rights reserved.</span>
         <div className="flex items-center gap-4">
-          <span>Crafted with passion &amp; modern WebGL technologies</span>
+          <span>Crafted with passion &amp; modern AI website building technologies</span>
           <button
             onClick={() => setIsAdminOpen(true)}
             className="text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors flex items-center gap-1 font-mono text-[11px]"

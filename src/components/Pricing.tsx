@@ -55,7 +55,7 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPackage }) => {
           className="flex items-center gap-2 hover:text-[var(--accent)] transition-colors"
         >
           <LinkIcon className="w-4 h-4 text-[var(--accent)]" />
-          <span>facebook.com/dubstar939</span>
+          <span>facebook.com/interwebs41</span>
         </a>
       </div>
 
@@ -87,7 +87,18 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPackage }) => {
                 <p className="text-xs text-[var(--text-muted)] font-light min-h-[36px] mb-4">{pkg.subtitle}</p>
 
                 <div className="mb-6 border-b border-[var(--glass-border)] pb-6">
-                  <span className="font-display text-4xl font-extrabold text-[var(--accent)]">{pkg.price}</span>
+                  {(() => {
+                    const match = pkg.price.match(/^(from)\s+(.*)$/i);
+                    if (match) {
+                      return (
+                        <span className="font-display text-4xl font-extrabold text-[var(--accent)] flex items-baseline gap-2">
+                          <span className="text-[0.25em] font-medium uppercase tracking-wider">{match[1]}</span>
+                          <span>{match[2]}</span>
+                        </span>
+                      );
+                    }
+                    return <span className="font-display text-4xl font-extrabold text-[var(--accent)]">{pkg.price}</span>;
+                  })()}
                 </div>
 
                 <ul className="space-y-3 text-xs text-[var(--text)] font-light mb-8">

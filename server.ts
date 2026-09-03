@@ -52,7 +52,7 @@ const DEFAULT_SITE_CONTENT = {
         'Content & Information Architecture',
         'Conversion Optimization Blueprint'
       ],
-      timeline: '1-2 Weeks'
+      timeline: '2-3 Days'
     },
     {
       id: 'ui-ux-design',
@@ -66,7 +66,7 @@ const DEFAULT_SITE_CONTENT = {
         'Mobile-First Responsive Layouts',
         'Usability Testing & Iteration'
       ],
-      timeline: '2-4 Weeks'
+      timeline: '2-3 Days'
     },
     {
       id: 'web-development',
@@ -76,11 +76,11 @@ const DEFAULT_SITE_CONTENT = {
       icon: 'Code2',
       keyDeliverables: [
         'React / Vite / Next.js Development',
-        'WebGL & Motion Interactive Shader Effects',
-        'Fast Load Speeds & Lighthouse Optimization',
+        'Modern Layout & Responsive Web Design (RWD)',
+        'Fast Load Speeds & Touch-Friendly Targets',
         'API & CMS Integration'
       ],
-      timeline: '3-6 Weeks'
+      timeline: '2-4 Days'
     },
     {
       id: 'brand-identity',
@@ -92,9 +92,9 @@ const DEFAULT_SITE_CONTENT = {
         'Logo & Visual Identity System',
         'Typography & Color Palette Guidelines',
         '3D Visual Assets & Micro-animations',
-        'Brand Book & Usage Rules'
+        'Content & Social Media Marketing (ongoing maintenance if needed)'
       ],
-      timeline: '3-4 Days'
+      timeline: '2-4 Days'
     }
   ],
   projects: [

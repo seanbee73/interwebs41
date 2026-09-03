@@ -15,8 +15,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService, 
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
-    service: initialService || 'Web Development',
-    budget: initialBudget || '$1,000 - $3,000',
+    service: initialService || 'Basic Web Design Package',
+    budget: initialBudget || '$1,000 - $2,500',
     message: '',
   });
 
@@ -227,10 +227,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService, 
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl bg-[var(--bg)] border border-[var(--glass-border)] focus:border-[var(--accent)] text-sm outline-none transition-colors"
                   >
-                    <option value="AI Web Development">AI Web Development</option>
-                    <option value="Immersive Web Applications">Immersive Web Applications</option>
-                    <option value="Digital Strategy & UX Architecture">Digital Strategy & UX</option>
-                    <option value="Media & Photography">Media & Photography</option>
+                    <option value="Basic Web Design Package">Basic Web Design Package</option>
+                    <option value="Standard Web Design Package">Standard Web Design Package</option>
+                    <option value="Premium Web Design Package">Premium Web Design Package</option>
+                    <option value="Social Media Marketing">Social Media Marketing</option>
                   </select>
                 </div>
 
@@ -242,9 +242,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService, 
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl bg-[var(--bg)] border border-[var(--glass-border)] focus:border-[var(--accent)] text-sm outline-none transition-colors"
                   >
-                    <option value="$400 - $750">$400 - $750</option>
-                    <option value="$1,000 - $3,000">$1,000 - $3,000</option>
-                    <option value="$3,000 - $5,000">$3,000 - $5,000</option>
+                    <option value="$1,000 - $2,500">$1,000 - $2,500</option>
+                    <option value="$2,500 to $5,000">$2,500 to $5,000</option>
                     <option value="$5,000+">$5,000+</option>
                   </select>
                 </div>

@@ -139,30 +139,28 @@
     },
     {
       "id": "classic",
-      "title": "The Classic",
-      "subtitle": "Great for growing businesses seeking full digital transformation.",
-      "price": "$750",
+      "title": "Standard Web Design Packages",
+      "subtitle": "Best For  - Small to medium-sized businesses, professional bloggers, and independent service providers who want a stronger, more polished online brand presence.",
+      "price": "from $2,500",
       "isPopular": true,
       "features": [
-        "Full brand & digital strategy workshop",
-        "Multi-page responsive web app development",
-        "Custom animations & micro-interactions",
-        "CMS / API & Contact integration",
-        "Comprehensive search engine indexing & performance optimization",
-        "Timeline planning & priority support"
+        "Design & Customization - Provides more design flexibility to give the site a unique look, often including a fully custom-designed homepage.",
+        "Scope & Pages - Covers more pages than a basic package (usually upto 10 pages)",
+        "Core Features - Builds on the basics by adding a blog, Responsive Web Design (RWD) with mobile flexibility layout, improved SEO features and simple e-commerce capabilities for selling a small number of products.",
+        "Revisions - Includes up to 5 rounds of design changes. Options for ongoing monthly maintenance.",
+        "Comprehensive search engine indexing & performance optimization."
       ]
     },
     {
       "id": "bespoke",
-      "title": "Custom Enterprise",
-      "subtitle": "Full scale WebGL, spatial computing, or complete brand redesigns.",
-      "price": "Custom",
+      "title": "Premium Web Design Packages",
+      "subtitle": "Best For - Established businesses, large organizations, or brands with highly competitive online goals and the budget to invest in a top-tier, custom web experience",
+      "price": "from $5,000",
       "features": [
-        "Bespoke WebGL 3D environments & shaders",
-        "Complete brand identity design system",
-        "Full stack server integration & database",
-        "Dedicated ongoing maintenance & SLA",
-        "Custom asset generation & art direction"
+        "Design & Customization - Ofers a fully bespoke, custom-tailored design built entirely around the brand, utilizing advanced layouts, custom animations, and interactive elements.",
+        "Scope & Pages - Covers comprehensive, large-scale sites of 20+ pages. Mobile responsive design features.",
+        "Core Features - Includes a full-featured e-commerce storefront with extensive product catalogs, advanced/in-depth SEO, and professional content creation assistance (like writing and photography).",
+        "Revisions & Support - ongoing maintenance, dedicated support, and unlimited rounds of revisions."
       ]
     }
   ],

@@ -26,10 +26,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService, 
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   useEffect(() => {
-    if (initialService) {
-      setFormData((prev) => ({ ...prev, service: initialService }));
+    if (initialService || initialBudget) {
+      setFormData((prev) => ({
+        ...prev,
+        ...(initialService ? { service: initialService } : {}),
+        ...(initialBudget ? { budget: initialBudget } : {}),
+      }));
     }
-  }, [initialService]);
+  }, [initialService, initialBudget]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -230,7 +234,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService, 
                     <option value="Basic Web Design Package">Basic Web Design Package</option>
                     <option value="Standard Web Design Package">Standard Web Design Package</option>
                     <option value="Premium Web Design Package">Premium Web Design Package</option>
+                    <option value="Full-Service Growth & Maintenance Package">Full-Service Growth & Maintenance Package</option>
                     <option value="Social Media Marketing">Social Media Marketing</option>
+                    {formData.service && ![
+                      'Basic Web Design Package',
+                      'Standard Web Design Package',
+                      'Premium Web Design Package',
+                      'Full-Service Growth & Maintenance Package',
+                      'Social Media Marketing'
+                    ].includes(formData.service) && (
+                      <option value={formData.service}>{formData.service}</option>
+                    )}
                   </select>
                 </div>
 
@@ -242,9 +256,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialService, 
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl bg-[var(--bg)] border border-[var(--glass-border)] focus:border-[var(--accent)] text-sm outline-none transition-colors"
                   >
+                    <option value="$299 / month (Retainer)">$299 / month (Retainer)</option>
                     <option value="$1,000 - $2,500">$1,000 - $2,500</option>
                     <option value="$2,500 to $5,000">$2,500 to $5,000</option>
                     <option value="$5,000+">$5,000+</option>
+                    {formData.budget && ![
+                      '$299 / month (Retainer)',
+                      '$1,000 - $2,500',
+                      '$2,500 to $5,000',
+                      '$5,000+'
+                    ].includes(formData.budget) && (
+                      <option value={formData.budget}>{formData.budget}</option>
+                    )}
                   </select>
                 </div>
               </div>

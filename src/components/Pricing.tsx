@@ -60,16 +60,16 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPackage }) => {
       </div>
 
       {/* Pricing Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
         {pricingPackages.map((pkg) => {
           const isSelected = selectedPackageId === pkg.id;
           return (
             <div
               key={pkg.id}
               onClick={() => setSelectedPackageId(pkg.id)}
-              className={`glass-card p-8 rounded-2xl cursor-pointer transition-all duration-300 relative overflow-hidden flex flex-col justify-between ${
+              className={`glass-card p-6 sm:p-7 rounded-2xl cursor-pointer transition-all duration-300 relative overflow-hidden flex flex-col justify-between ${
                 pkg.isPopular
-                  ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/40 bg-[var(--accent)]/5'
+                  ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/40 bg-[var(--accent)]/5 shadow-[0_0_30px_rgba(59,130,246,0.08)]'
                   : 'hover:border-[var(--glass-border)]'
               }`}
             >
@@ -80,34 +80,68 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPackage }) => {
               )}
 
               <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <Camera className="w-6 h-6 text-[var(--accent)]" />
-                  <h3 className="font-display text-2xl font-bold text-[var(--text)]">{pkg.title}</h3>
+                <div className="flex items-center gap-2.5 mb-2">
+                  <Camera className="w-5 h-5 text-[var(--accent)] shrink-0" />
+                  <h3 className="font-display text-xl font-bold text-[var(--text)] leading-snug">{pkg.title}</h3>
                 </div>
-                <p className="text-xs text-[var(--text-muted)] font-light min-h-[36px] mb-4">{pkg.subtitle}</p>
+                <p className="text-xs text-[var(--text-muted)] font-light min-h-[48px] mb-4 leading-relaxed">
+                  {pkg.subtitle}
+                </p>
 
-                <div className="mb-6 border-b border-[var(--glass-border)] pb-6">
+                <div className="mb-6 border-b border-[var(--glass-border)] pb-5">
                   {(() => {
-                    const match = pkg.price.match(/^(from)\s+(.*)$/i);
-                    if (match) {
-                      return (
-                        <span className="font-display text-4xl font-extrabold text-[var(--accent)] flex items-baseline gap-2">
-                          <span className="text-[0.25em] font-medium uppercase tracking-wider">{match[1]}</span>
-                          <span>{match[2]}</span>
+                    const fromMatch = pkg.price.match(/^(from)\s+(.*)$/i);
+                    const isFrom = !!fromMatch;
+                    const mainPrice = fromMatch ? fromMatch[2] : pkg.price;
+                    const periodMatch = mainPrice.match(/^(.*?)(\s*\/\s*(?:month|mo))$/i);
+                    const amount = periodMatch ? periodMatch[1] : mainPrice;
+                    const period = periodMatch ? periodMatch[2] : '';
+
+                    return (
+                      <div className="flex flex-col">
+                        <span className="font-display text-3xl font-extrabold text-[var(--accent)] flex flex-wrap items-baseline gap-1.5">
+                          {isFrom && (
+                            <span className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+                              FROM
+                            </span>
+                          )}
+                          <span>{amount}</span>
+                          {period && (
+                            <span className="text-xs font-mono font-normal text-[var(--text-muted)] lowercase">
+                              {period}
+                            </span>
+                          )}
                         </span>
-                      );
-                    }
-                    return <span className="font-display text-4xl font-extrabold text-[var(--accent)]">{pkg.price}</span>;
+                        {pkg.id === 'growth-maintenance' && (
+                          <span className="text-[11px] font-mono text-[var(--text-dim)] mt-1">
+                            Retainer-Based Pricing
+                          </span>
+                        )}
+                      </div>
+                    );
                   })()}
                 </div>
 
                 <ul className="space-y-3 text-xs text-[var(--text)] font-light mb-8">
-                  {pkg.features.map((feat, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5">
-                      <Check className="w-4 h-4 text-[var(--accent)] shrink-0 mt-0.5" />
-                      <span className="leading-relaxed">{feat}</span>
-                    </li>
-                  ))}
+                  {pkg.features.map((feat, idx) => {
+                    const cleanFeat = feat.replace(/^\\\([✓\w]+\\\)\s*/, '').replace(/^✓\s*/, '');
+                    const parts = cleanFeat.split(/\s+[–—\-]\s+/);
+                    return (
+                      <li key={idx} className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 text-[var(--accent)] shrink-0 mt-0.5" />
+                        <span className="leading-relaxed">
+                          {parts.length > 1 ? (
+                            <>
+                              <strong className="font-semibold text-[var(--text)]">{parts[0]}</strong>
+                              <span className="text-[var(--text-muted)]"> – {parts.slice(1).join(' – ')}</span>
+                            </>
+                          ) : (
+                            <span className="text-[var(--text-muted)]">{cleanFeat}</span>
+                          )}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
 
@@ -122,7 +156,7 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPackage }) => {
                     : 'bg-[var(--glass)] border border-[var(--glass-border)] text-[var(--text)] hover:border-[var(--accent)] hover:text-[var(--accent)]'
                 }`}
               >
-                <span>Select {pkg.title}</span>
+                <span>Select Package</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>

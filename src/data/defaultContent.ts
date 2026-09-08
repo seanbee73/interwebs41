@@ -144,6 +144,18 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
         'Core Features - Includes a full-featured e-commerce storefront with extensive product catalogs, advanced/in-depth SEO, and professional content creation assistance (like writing and photography).',
         'Revisions & Support - ongoing maintenance, dedicated support, and unlimited rounds of revisions.'
       ]
+    },
+    {
+      id: 'growth-maintenance',
+      title: 'Full-Service Growth & Maintenance Package',
+      subtitle: 'Best For – Established businesses, busy entrepreneurs, and growing brands who want a completely hands-off solution for their website upkeep, continuous high-quality content, and active social media marketing.',
+      price: 'from $299 / month',
+      features: [
+        'Ongoing Maintenance & Security – Includes regular software updates, weekly automatic backups, 24/7 security monitoring, and uptime checks to keep your website safe and running smoothly.',
+        'Professional Content Creation – Continuous monthly content generation, including 2–4 fully written blog posts, refreshed website copy, or updated product descriptions to keep visitors engaged and boost search visibility.',
+        'Social Media & Digital Marketing – Integration of live social media feeds directly onto your site, setup of automated marketing tools, and professional social media management to drive continuous traffic to your business.',
+        'Dedicated Support & Revisions – Peace of mind with up to 3 hours of dedicated help each month for small content updates, design tweaks, or text and image changes as your business evolves.'
+      ]
     }
   ],
   process: [

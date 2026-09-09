@@ -75,16 +75,6 @@ export const Footer: React.FC = () => {
                   Email
                 </a>
               </li>
-              <li>
-                <a
-                  href="https://sites.google.com/view/939pro/portfolio"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--text-dim)] hover:text-[var(--accent)] transition-colors"
-                >
-                  Google Portfolio
-                </a>
-              </li>
             </ul>
           </div>
         </div>

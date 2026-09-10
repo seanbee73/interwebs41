@@ -30,7 +30,7 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPackage }) => {
         Pricing &amp; Investment
       </h2>
       <p className="text-base sm:text-lg text-[var(--text-muted)] mb-8 max-w-2xl font-light">
-        Transparent investment options designed for exceptional digital experiences and media production.
+        Transparent investment options designed for exceptional digital experiences and media production. All prices are in Canadian Dollars.
       </p>
 
       {/* Direct Contact Bar */}

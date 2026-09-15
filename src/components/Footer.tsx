@@ -71,6 +71,36 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
+                <a
+                  href="https://www.instagram.com/interwebs41"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--text-dim)] hover:text-[var(--accent)] transition-colors"
+                >
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.tiktok.com/@interwebs41"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--text-dim)] hover:text-[var(--accent)] transition-colors"
+                >
+                  TikTok
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.threads.net/@interwebs41"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--text-dim)] hover:text-[var(--accent)] transition-colors"
+                >
+                  Threads
+                </a>
+              </li>
+              <li>
                 <a href={`mailto:${contactInfo.email}`} className="text-[var(--text-dim)] hover:text-[var(--accent)] transition-colors">
                   Email
                 </a>

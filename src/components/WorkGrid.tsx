@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, ExternalLink, X } from 'lucide-react';
 import { ProjectItem } from '../types';
 import { useSiteContent } from '../context/SiteContentContext';
@@ -8,6 +8,29 @@ export const WorkGrid: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   const projectsList = content.projects || [];
+
+  // Close modal on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && selectedProject) {
+        setSelectedProject(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedProject]);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedProject]);
 
   return (
     <section id="work" className="section relative z-10 container-custom">
@@ -61,11 +84,22 @@ export const WorkGrid: React.FC = () => {
 
       {/* Modal for Project Detail */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn">
-          <div className="glass-card w-full max-w-3xl p-6 sm:p-8 relative bg-[var(--bg-alt)] border border-[var(--accent)]/30 rounded-2xl shadow-2xl overflow-hidden">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn"
+          onClick={() => setSelectedProject(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedProject.name}
+        >
+          <div
+            className="glass-card w-full max-w-3xl p-6 sm:p-8 relative bg-[var(--bg-alt)] border border-[var(--accent)]/30 rounded-2xl shadow-2xl overflow-hidden animate-scaleUp"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
+              type="button"
               onClick={() => setSelectedProject(null)}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/60 text-white hover:bg-[var(--accent)] hover:text-black transition-colors"
+              aria-label="Close modal"
+              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/60 text-white hover:bg-[var(--accent)] hover:text-black transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -106,17 +140,19 @@ export const WorkGrid: React.FC = () => {
 
             <div className="flex items-center justify-between pt-4 border-t border-[var(--glass-border)]">
               <a
-                href={selectedProject.link}
+                href={selectedProject.link || 'https://bayviewmalldsn.netlify.app/'}
                 target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-medium tracking-wider uppercase text-[var(--bg)] bg-[var(--accent)] px-6 py-3 rounded-full hover:shadow-[0_0_20px_var(--accent-glow)] transition-all"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-medium tracking-wider uppercase text-[var(--bg)] bg-[var(--accent)] px-6 py-3 rounded-full hover:shadow-[0_0_20px_var(--accent-glow)] transition-all cursor-pointer font-semibold"
               >
                 <span>Visit Project Site</span>
                 <ExternalLink className="w-4 h-4" />
               </a>
               <button
+                type="button"
                 onClick={() => setSelectedProject(null)}
-                className="text-xs text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
+                aria-label="Close Case Study"
+                className="px-4 py-2 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors cursor-pointer rounded-lg hover:bg-white/5"
               >
                 Close Case Study
               </button>

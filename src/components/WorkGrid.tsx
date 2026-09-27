@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { ArrowUpRight, ExternalLink, X } from 'lucide-react';
 import { ProjectItem } from '../types';
 import { useSiteContent } from '../context/SiteContentContext';
@@ -31,6 +32,20 @@ export const WorkGrid: React.FC = () => {
       document.body.style.overflow = '';
     };
   }, [selectedProject]);
+
+  const getProjectUrl = (project: ProjectItem) => {
+    if (project.link && project.link.trim().length > 0) {
+      return project.link;
+    }
+    if (
+      project.id === 'prism-experience' ||
+      project.name?.toLowerCase().includes('salon') ||
+      project.description?.toLowerCase().includes('rk salon')
+    ) {
+      return 'https://rk-salon.netlify.app/';
+    }
+    return 'https://bayviewmalldsn.netlify.app/';
+  };
 
   return (
     <section id="work" className="section relative z-10 container-custom">
@@ -82,84 +97,86 @@ export const WorkGrid: React.FC = () => {
         ))}
       </div>
 
-      {/* Modal for Project Detail */}
-      {selectedProject && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn"
-          onClick={() => setSelectedProject(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-label={selectedProject.name}
-        >
+      {/* Portal Modal for Project Detail */}
+      {selectedProject &&
+        createPortal(
           <div
-            className="glass-card w-full max-w-3xl p-6 sm:p-8 relative bg-[var(--bg-alt)] border border-[var(--accent)]/30 rounded-2xl shadow-2xl overflow-hidden animate-scaleUp"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md animate-fadeIn"
+            onClick={() => setSelectedProject(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={selectedProject.name}
           >
-            <button
-              type="button"
-              onClick={() => setSelectedProject(null)}
-              aria-label="Close modal"
-              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/60 text-white hover:bg-[var(--accent)] hover:text-black transition-colors cursor-pointer"
+            <div
+              className="glass-card w-full max-w-3xl max-h-[90vh] flex flex-col p-6 sm:p-8 relative bg-[var(--bg-alt)] border border-[var(--accent)]/30 rounded-2xl shadow-2xl overflow-y-auto animate-scaleUp"
+              onClick={(e) => e.stopPropagation()}
             >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="relative h-64 sm:h-80 w-full rounded-xl overflow-hidden mb-6">
-              <img
-                src={selectedProject.image}
-                alt={selectedProject.name}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
-                <div>
-                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--accent)]">
-                    {selectedProject.category}
-                  </span>
-                  <h3 className="font-display text-2xl sm:text-3xl font-bold">{selectedProject.name}</h3>
-                </div>
-                <span className="font-mono text-xs text-gray-300">{selectedProject.year}</span>
-              </div>
-            </div>
-
-            <p className="text-sm sm:text-base text-[var(--text-muted)] font-light leading-relaxed mb-6">
-              {selectedProject.description}
-            </p>
-
-            <div className="flex flex-wrap gap-2 mb-8">
-              {selectedProject.tags.map((tag, i) => (
-                <span
-                  key={i}
-                  className="px-3 py-1 rounded-full bg-[var(--glass)] border border-[var(--glass-border)] text-xs font-mono text-[var(--text-muted)]"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex items-center justify-between pt-4 border-t border-[var(--glass-border)]">
-              <a
-                href={selectedProject.link || 'https://bayviewmalldsn.netlify.app/'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-medium tracking-wider uppercase text-[var(--bg)] bg-[var(--accent)] px-6 py-3 rounded-full hover:shadow-[0_0_20px_var(--accent-glow)] transition-all cursor-pointer font-semibold"
-              >
-                <span>Visit Project Site</span>
-                <ExternalLink className="w-4 h-4" />
-              </a>
               <button
                 type="button"
                 onClick={() => setSelectedProject(null)}
-                aria-label="Close Case Study"
-                className="px-4 py-2 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors cursor-pointer rounded-lg hover:bg-white/5"
+                aria-label="Close modal"
+                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/70 text-white hover:bg-[var(--accent)] hover:text-black transition-colors cursor-pointer"
               >
-                Close Case Study
+                <X className="w-5 h-5" />
               </button>
+
+              <div className="relative h-56 sm:h-72 w-full rounded-xl overflow-hidden mb-6 shrink-0">
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.name}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                  <div>
+                    <span className="text-xs font-mono uppercase tracking-wider text-[var(--accent)]">
+                      {selectedProject.category}
+                    </span>
+                    <h3 className="font-display text-2xl sm:text-3xl font-bold">{selectedProject.name}</h3>
+                  </div>
+                  <span className="font-mono text-xs text-gray-300">{selectedProject.year}</span>
+                </div>
+              </div>
+
+              <p className="text-sm sm:text-base text-[var(--text-muted)] font-light leading-relaxed mb-6">
+                {selectedProject.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {selectedProject.tags.map((tag, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1 rounded-full bg-[var(--glass)] border border-[var(--glass-border)] text-xs font-mono text-[var(--text-muted)]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex items-center justify-between pt-5 border-t border-[var(--glass-border)] mt-auto gap-4 flex-wrap">
+                <a
+                  href={getProjectUrl(selectedProject)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-medium tracking-wider uppercase text-[var(--bg)] bg-[var(--accent)] px-6 py-3 rounded-full hover:shadow-[0_0_20px_var(--accent-glow)] transition-all cursor-pointer font-bold"
+                >
+                  <span>Visit Project Site</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(null)}
+                  aria-label="Close Case Study"
+                  className="px-5 py-2.5 text-xs font-medium text-white/80 hover:text-[var(--accent)] transition-colors cursor-pointer rounded-lg hover:bg-white/10 border border-transparent hover:border-[var(--glass-border)]"
+                >
+                  Close Case Study
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </section>
   );
 };

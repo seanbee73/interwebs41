@@ -17,7 +17,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
   manifesto: {
     badge: 'Our Philosophy',
     title: 'We build high-performance, immersive web experiences that convert.',
-    paragraph1: 'At InterWebs41, we fuse cutting-edge AI architecture with WebGL visual craft and responsive performance to build digital assets that stand out in crowded markets.',
+    paragraph1: 'At InterWebs41, we fuse cutting-edge AI architecture with highly interactive visual craft and responsive performance to build digital assets that stand out in crowded markets.',
     paragraph2: 'Every line of code, animation, and UI element is engineered to deliver measurable business impact, lightning fast loading speeds, and unforgettable user engagement.'
   },
   metrics: [
